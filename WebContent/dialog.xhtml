@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<h:form id="form">
+	
+	<h:outputLabel value="Primefaces Confirm Dialog" />
+
+	<h:panelGrid columns="1" cellpadding="5">
+		<p:commandButton value="Destroy the World"
+			onclick="confirmation.show()" type="button" />
+	</h:panelGrid>
+	<p:confirmDialog message="Are you sure about destroying the world?"
+		showEffect="bounce" hideEffect="explode"
+		header="Initiating destroy process" severity="alert"
+		widgetVar="confirmation">
+
+		<p:commandButton value="Yes Sure" update="form"
+			oncomplete="confirmation.hide()"
+			actionListener="#{confirmDialogBean.destroyWorld}" />
+		<p:commandButton value="Not Yet" onclick="confirmation.hide()"
+			type="button" />
+
+	</p:confirmDialog>
+	<p:dialog id="reamrquesDEQ" widgetVar="dialogaboutDEQ" header="Informations"
+   			 width="400" closable="true" resizable="false" showEffect="clip"
+    			hideEffect="clip" modal="true" appendToBody="true">
+
+    	<h:outputText  value="sucessfully destroyed :p"/>
+	</p:dialog>
+</h:form>
+</html>
