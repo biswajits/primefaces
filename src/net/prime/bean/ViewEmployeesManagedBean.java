@@ -7,6 +7,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.primefaces.event.RowEditEvent;
+
 import net.prime.model.Employee;
 
  
@@ -35,5 +37,9 @@ public class ViewEmployeesManagedBean {
  
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
+    }
+   
+    public void onRowEdit(RowEditEvent event) {
+      System.out.println(((Employee)event.getObject()).getEmployeeName());
     }
 }

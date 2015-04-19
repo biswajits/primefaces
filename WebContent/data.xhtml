@@ -5,22 +5,31 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head></h:head>
-<h:form>
+<h:form id="form">
 	<h:outputLabel value="Primefaces Data Exporter"/>
 	<p:dataTable id="dataTable"
-		value="#{viewEmployeesManagedBean.employees}" var="employee">
+		value="#{viewEmployeesManagedBean.employees}" var="employee" editable="true" >
+		
+		<p:ajax event="rowEdit" listener="#{viewEmployeesManagedBean.onRowEdit}"  />
+       
 		<p:column>
 			<f:facet name="header">
 				<h:outputText value="Employee ID"></h:outputText>
 			</f:facet>
 			<h:outputText value="#{employee.employeeId}"></h:outputText>
 		</p:column>
-		<p:column>
-			<f:facet name="header">
-				<h:outputText value="Employee Name"></h:outputText>
-			</f:facet>
-			<h:outputText value="#{employee.employeeName}"></h:outputText>
+		<p:column headerText="Employee Name">
+		<p:cellEditor>
+			
+			<f:facet name="output"><h:outputText value="#{employee.employeeName}"/></f:facet>
+			<f:facet name="input"><p:inputText id="modelInput" value="#{employee.employeeName}" style="width:96%"/></f:facet>
+			
+                
+              </p:cellEditor>
 		</p:column>
+		 <p:column headerText="Edit">  
+            <p:rowEditor />  
+        </p:column>  
 	</p:dataTable>
 	<h:panelGrid columns="2">
 		<p:panel header="Export All Data">
