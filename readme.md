@@ -11,3 +11,5 @@ jsf-impl.jar,
 jsf-api.jar, 
 itext-2.1.7.jar, 
 primefaces-3.4.jar
+
+https://code.google.com/p/primefaces/source/browse/primefaces/trunk/src/main/java/org/primefaces/component/export/?r=7666
